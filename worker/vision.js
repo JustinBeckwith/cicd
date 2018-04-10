@@ -9,9 +9,10 @@ const gconf = {
   keyFilename: 'keyfile.json'
 };
 
+const bucketName = 'cicd-ftw';
 const vision = new Vision.ImageAnnotatorClient(gconf);
 const storage = new Storage(gconf);
-const bucket = storage.bucket('cicd-ftw');
+const bucket = storage.bucket(bucketName);
 
 async function annotate (url) {
   const name = uuid();
@@ -33,7 +34,7 @@ async function annotate (url) {
       });
   });
 
-  const labels = await vision.labelDetection(`gs://cloudcats-bucket/${name}`);
+  const labels = await vision.labelDetection(`gs://${bucketName}/${name}`);
   file.delete();
   return {
     url: url,

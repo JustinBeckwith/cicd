@@ -55,6 +55,7 @@ async function analyzeImage (url, call) {
   try {
     logger.info('processing ' + url);
     const visionResult = await vision.annotate(url);
+    console.log(visionResult);
     const evt = await publishEvent(visionResult, call);
     return evt;
   } catch (e) {
