@@ -1,0 +1,94 @@
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+.pics {
+  width:50%;
+  float: left;
+}
+
+.pics div {
+  width: 200px;
+  height: 200px;
+  margin: 3px;
+  background-size: cover;
+  float: left;
+}
+
+.cover::after {
+  content: "";
+  background: url(boo2.png) no-repeat center top fixed;
+  background-size: cover;
+  opacity: 0.85;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  z-index: -1;
+}
+
+.cover2::after {
+  content: "";
+  background: url(boo2.png) no-repeat center top fixed;
+  background-size: cover;
+  opacity: 0.16;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  z-index: -1;
+}
+
+
+#view-source {
+  position: fixed;
+  display: block;
+  left: 0;
+  bottom: 0;
+  margin-left: 80px;
+  margin-bottom: 40px;
+  z-index: 4;
+}
+
+#add {
+  position: fixed;
+  display: block;
+  right: 0;
+  bottom: 0;
+  margin-right: 80px;
+  margin-bottom: 40px;
+  z-index: 4;
+}
+
+#progress {
+  display: none;
+  width:50%;
+  margin-right: auto;
+  margin-left: auto;
+  height:10px;
+}
+
+#click-container {
+  border: 1px solid #000;
+  width: 100%;
+  height: 75px;
+  background-color: #0F0;
+}
+
+#btn {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+  height: 75px;
+  font-size: 28px;
+}
+
+#container {
+  width: calc(100%-40px);
+  margin: 20px;
+  text-align: center;
+}

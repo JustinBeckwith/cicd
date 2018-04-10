@@ -1,0 +1,34 @@
+{
+  "name": "cloudcats-worker",
+  "private": true,
+  "version": "1.0.0",
+  "description": "The cloudcats worker uses the reddit API to crawl images on /r/aww and classify them with the Vision API as dogs, cats, or other.",
+  "main": "server.js",
+  "scripts": {
+    "test": "ava",
+    "start": "GCLOUD_PROJECT=cloudcats-next node server.js",
+    "debug": "GCLOUD_PROJECT=cloudcats-next node --inspect server.js",
+    "update": "./update.sh"
+  },
+  "author": "Justin Beckwith<justin.beckwith@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@google-cloud/bigquery": "^1.0.0",
+    "@google-cloud/debug-agent": "^2.4.0",
+    "@google-cloud/logging-winston": "^0.8.1",
+    "@google-cloud/storage": "^1.6.0",
+    "@google-cloud/trace-agent": "^2.5.0",
+    "@google-cloud/vision": "^0.17.0",
+    "async": "^2.6.0",
+    "axios": "^0.18.0",
+    "grpc": "^1.10.0",
+    "uuid": "^3.2.1",
+    "winston": "^2.4.1"
+  },
+  "engines": {
+    "node": "^8.2.0"
+  },
+  "devDependencies": {
+    "ava": "^0.25.0"
+  }
+}

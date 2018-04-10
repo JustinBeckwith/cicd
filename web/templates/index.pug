@@ -1,0 +1,47 @@
+doctype html
+html
+  head
+    title Google Cloud:  CLOUD CATS
+    link(rel='stylesheet', href='//fonts.googleapis.com/icon?family=Material+Icons')
+    link(rel='stylesheet', href='//code.getmdl.io/1.1.1/material.indigo-pink.min.css')
+    script(defer='', src='//code.getmdl.io/1.1.1/material.min.js')
+    link(rel='stylesheet', href='style.css')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  body.mdl-demo.mdl-color--grey-200.mdl-color-text--grey-700.mdl-base
+    .mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+      header.mdl-layout__header
+        .mdl-layout__header-row
+          span.mdl-layout-title Google Cloud: CLOUD CATS
+      .mdl-layout__drawer
+        span.mdl-layout-title Learn more
+        nav.mdl-navigation
+          a.mdl-navigation__link(href='https://cloud.google.com/nodejs') Node.js on Google Cloud
+          a.mdl-navigation__link(href='https://github.com/GoogleCloudPlatform/nodejs-docs-samples') Node.js samples
+          a.mdl-navigation__link(href='http://jbeckwith.com') About me
+      main.mdl-layout__content.cover
+        #container.page-content
+          #progress.mdl-progress.mdl-js-progress.mdl-progress__indeterminate
+          
+          #cats.pics
+          #dogs.pics
+            
+    a#view-source.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-color--accent.mdl-color-text--accent-contrast(href='https://github.com/JustinBeckwith/cloudcats', target='_blank') View Source
+    
+    button#add.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect.mdl-button--colored.mdl-shadow--4dp.mdl-color--accent
+      i.material-icons(role='presentation') add
+      span.visuallyhidden Add
+
+    dialog.mdl-dialog
+      h4.mdl-dialog__title(id='dialogTitle') Turtles Win!
+      .mdl-dialog__content(id='dialogContent')
+        p
+          | Turtles weren't even an option?
+      .mdl-dialog__actions
+        button.mdl-button.close(type='button') Awesome!
+
+
+    #snackbar.mdl-js-snackbar.mdl-snackbar
+      .mdl-snackbar__text Vote counted!
+      button.mdl-snackbar__action(type='button')
+    script(src='/socket.io/socket.io.js')
+    script(src='script.js')
