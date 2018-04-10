@@ -31,15 +31,15 @@ const io = require('socket.io')(server.listener, {
   transports: ['polling']
 });
 
-async function main() {
+async function main () {
   await server.register([require('vision'), require('inert')]);
 
   // configure jade views
   server.views({
     engines: { pug: require('pug') },
-    path: __dirname + '/templates',
+    path: path.join(__dirname, '/templates'),
     compileOptions: {
-        pretty: true
+      pretty: true
     }
   });
 

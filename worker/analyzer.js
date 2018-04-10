@@ -16,17 +16,17 @@ const PostType = {
   DOG: 1,
   NEITHER: 2,
   BOTH: 3
-}
+};
 
-async function publishToBigQuery(data) {
+async function publishToBigQuery (data) {
   try {
-    const results = await table.insert(data);
+    await table.insert(data);
   } catch (e) {
-    logger.error(`error publishing to bigquery: ${util.inspect(err)}\n\t${err.stack}`);
+    logger.error(`error publishing to bigquery: ${util.inspect(e)}\n\t${e.stack}`);
   }
 }
 
-async function publishEvent(result, call) {
+async function publishEvent (result, call) {
   let type = PostType.NEITHER;
   const containsDog = result.labels.indexOf('dog') > -1;
   const containsCat = result.labels.indexOf('cat') > -1;
@@ -51,21 +51,21 @@ async function publishEvent(result, call) {
   call.write(data);
 }
 
-async function analyzeImage(url, call) {
+async function analyzeImage (url, call) {
   try {
     logger.info('processing ' + url);
     const visionResult = await vision.annotate(url);
     const evt = await publishEvent(visionResult, call);
     return evt;
   } catch (e) {
-    logger.error("Error processing image");
+    logger.error('Error processing image');
     logger.error(e);
   }
 }
 
-async function analyze(call) {
+async function analyze (call) {
   return new Promise((resolve, reject) => {
-    logger.info("Starting to analyze!");
+    logger.info('Starting to analyze!');
     let cnt = 0;
     const ai = util.callbackify(analyzeImage);
     reddit.getImageUrls().then(urls => {
@@ -75,14 +75,14 @@ async function analyze(call) {
             cnt++;
             logger.info(`${cnt} objects complete`);
           }
-          callback(err)
+          callback(err);
         });
       }, 15);
       q.push(urls);
       q.drain = () => {
         logger.info('***all items have been processed***');
         resolve();
-      }
+      };
     }).catch(e => {
       reject(e);
     });

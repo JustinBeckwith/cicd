@@ -1,15 +1,14 @@
 'use strict';
 
 const logger = require('./logger');
-const request = require('request');
 const grpc = require('grpc');
 
 const proto = grpc.load('cloudcats.proto').cloudcats;
 
 const apiEndpoint =
-  process.env.NODE_ENV == 'production' ?
-    'cloudcats-worker:8081' :
-    '0.0.0.0:8081';
+  process.env.NODE_ENV === 'production'
+    ? 'cloudcats-worker:8081'
+    : '0.0.0.0:8081';
 
 // Create the subscription, and forward messages to the browser
 const listen = (io, callback) => {
@@ -25,7 +24,7 @@ const listen = (io, callback) => {
  * Create a new gRPC client.  Connect to the worker, and
  * analyze the stream of responses.
  */
-function makeRequest(socket) {
+function makeRequest (socket) {
   try {
     logger.info(`Requesting a run on ${apiEndpoint}...`);
     let cnt = 0;
@@ -43,16 +42,16 @@ function makeRequest(socket) {
       logger.info('Analyze request complete.');
       socket.emit('cloudcats', {
         type: 'FIN'
-      })
+      });
     });
   } catch (e) {
-    logger.error("Error making gRPC request");
+    logger.error('Error making gRPC request');
     logger.error(e);
   }
 }
 
 var api = {
   listen: listen
-}
+};
 
 module.exports = api;

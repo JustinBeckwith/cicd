@@ -2,9 +2,6 @@
 
 const axios = require('axios');
 const uuid = require('uuid/v4');
-const util = require('util');
-const logger = require('./logger');
-const gcperror = require('./gcperror');
 const Vision = require('@google-cloud/vision');
 const Storage = require('@google-cloud/storage');
 
@@ -14,11 +11,9 @@ const gconf = {
 
 const vision = new Vision.ImageAnnotatorClient(gconf);
 const storage = new Storage(gconf);
-const bucket = storage.bucket('cloudcats-bucket');
+const bucket = storage.bucket('cicd-ftw');
 
-var count = 0;
-
-async function annotate(url) {
+async function annotate (url) {
   const name = uuid();
   const file = bucket.file(name);
 
@@ -36,7 +31,7 @@ async function annotate(url) {
       .on('finish', () => {
         resolve();
       });
-    });
+  });
 
   const labels = await vision.labelDetection(`gs://cloudcats-bucket/${name}`);
   file.delete();
@@ -48,6 +43,6 @@ async function annotate(url) {
 
 let api = {
   annotate: annotate
-}
+};
 
 module.exports = api;

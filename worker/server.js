@@ -21,7 +21,7 @@ server.addService(proto.Worker.service, {
   analyze: (call) => {
     analyzer.analyze(call)
       .then(result => {
-        logger.info("Request complete. Ending streaming response.");
+        logger.info('Request complete. Ending streaming response.');
         call.end();
       }).catch(err => {
         logger.error('Error analyzing reddit');
