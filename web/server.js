@@ -2,13 +2,13 @@
 
 require('@google-cloud/trace-agent').start({
   keyFilename: './keyfile.json',
-  projectId: 'cloudcats-next'
+  projectId: 'cicd-ftw'
 });
 
 require('@google-cloud/debug-agent').start({
   allowExpressions: true,
   keyFilename: './keyfile.json',
-  projectId: 'cloudcats-next'
+  projectId: 'cicd-ftw'
 });
 
 const Hapi = require('hapi');

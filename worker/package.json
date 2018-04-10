@@ -6,8 +6,8 @@
   "main": "server.js",
   "scripts": {
     "test": "ava",
-    "start": "GCLOUD_PROJECT=cloudcats-next node server.js",
-    "debug": "GCLOUD_PROJECT=cloudcats-next node --inspect server.js",
+    "start": "GCLOUD_PROJECT=cicd-ftw node server.js",
+    "debug": "GCLOUD_PROJECT=cicd-ftw node --inspect server.js",
     "update": "./update.sh"
   },
   "author": "Justin Beckwith<justin.beckwith@gmail.com>",
