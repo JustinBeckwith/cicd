@@ -4,7 +4,8 @@
   "description": "CloudCats is an example of using node.js and various Google Cloud APIs and services to solve the greatest question of our time:  do developers prefer dogs or cats.",
   "scripts": {
     "connect": "gcloud container clusters get-credentials cloudcats --zone us-central1-a --project cicd-ftw",
-    "update": "./update.sh"
+    "update": "./update.sh",
+    "start": "(cd web && npm start) & (cd worker && npm start)"
   },
   "repository": {
     "type": "git",
