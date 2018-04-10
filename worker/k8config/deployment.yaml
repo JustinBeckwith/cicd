@@ -19,8 +19,7 @@ spec:
     spec:
       containers:
       - name: cloudcats-worker
-        image: gcr.io/cicd-ftw/ccworker:latest
-        imagePullPolicy: Always
+        image: gcr.io/cicd-ftw/ccworker
         ports:
         - name: http-server
           containerPort: 8081
