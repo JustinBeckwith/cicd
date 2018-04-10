@@ -1,0 +1,14 @@
+apiVersion: skaffold/v1alpha2
+kind: Config
+build:
+  artifacts:
+  - imageName: gcr.io/cicd-ftw/ccweb
+    workspace: ./web
+  - imageName: gcr.io/cicd-ftw/ccworker
+    workspace: ./worker
+  local: {}
+deploy:
+  kubectl:
+    manifests:
+    - web/k8config/*
+    - worker/k8config/*
