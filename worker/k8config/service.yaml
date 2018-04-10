@@ -6,7 +6,7 @@ metadata:
     app: cloudcats
     tier: worker
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
   - port: 8081
   selector:
