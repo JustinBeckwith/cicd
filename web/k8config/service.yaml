@@ -7,7 +7,6 @@ metadata:
     tier: web
 spec:
   type: LoadBalancer
-  loadBalancerIP: 104.154.132.78
   sessionAffinity: ClientIP
   ports:
   - port: 80
